@@ -1,0 +1,34 @@
+function theHuntingGames(input) {
+    let days = Number(input.shift());
+    let playersCount = Number(input.shift());
+    let totalEnergy = Number(input.shift());
+    let waterPerPerson = Number(input.shift());
+    let foodPerPerson = Number(input.shift());
+
+    let totalWater = days * playersCount * waterPerPerson;
+    let totalFood = days * playersCount * foodPerPerson;
+
+    for (let i = 1; i <= days; i++) {
+        let energyLoss = Number(input.shift());
+        totalEnergy -= energyLoss;
+        if (totalEnergy <= 0) {
+            break;
+        }
+        if (i % 2 === 0) {
+            totalWater *= 0.7;
+            totalEnergy += totalEnergy * 0.05;
+        }
+        if (i % 3 === 0) {
+            totalFood -= totalFood / playersCount;
+            totalEnergy += totalEnergy * 0.1;
+        }
+
+    }
+    if (totalEnergy > 0) {
+        console.log(
+            `You are ready for the quest. You will be left with - ${totalEnergy.toFixed(2)} energy!`
+        );
+    } else {
+        console.log(`You will run out of energy. You will be left with ${totalFood.toFixed(2)} food and ${totalWater.toFixed(2)} water.`);
+    }
+}

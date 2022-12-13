@@ -1,0 +1,9 @@
+https://pastebin.com/xd5Z6CsA
+function extractEmails(input) {
+  let textToSearch = input;
+  let pattern = /\b(?<!\S)(([a-z0-9\-\.]+@[a-z0-9\-]+\.[a-z0-9]+([\.a-z0-9]+)?))\b/g;
+  let all = textToSearch.match(pattern);
+  for (let match of all) {
+    console.log(match)
+  }
+}
